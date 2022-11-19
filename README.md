@@ -53,7 +53,7 @@ docker image build -t mnnsashraf/custom-jenkins-docker .
 2. #### In K8s cluster 
 
     ##### `in-line` method is used here but it can also be in .yaml deployment
-    [a link](Deplyoment)
+    [See Guide here](Deplyoment\README.md)
 
     Create a deployment 
     ```cli

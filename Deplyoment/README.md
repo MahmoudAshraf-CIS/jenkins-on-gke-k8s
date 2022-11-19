@@ -9,17 +9,29 @@ The same deployment of the official documentation, just instead of using [`jenki
 see [deployment.yaml](deployment.yaml?plain=1#L22)
 
 
-Deploy to Kubernates cluster
+Deploy to Kubernetes cluster
+
 
 ```cli
 kubectl create namespace devops-tools
 kubectl apply -f serviceAccount.yaml
+```
+For the sake of simplicity, am assuming Jenkins data will be stored on a persistent volume on the host node
+before proceeding you need to get the node name 
+
+```cli
+kubectl get nodes
+```
+
+[Set the values at volume.yaml](volume.yaml?plain#L33)
+
+
+```
 kubectl create -f volume.yaml
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 kubectl get pods --namespace=devops-tools
-
-kubectl exec -it <jenkins-559d8cd85c-NameOfJenkinsContainer> cat /var/jenkins_home/secrets/initialAdminPassword -n devops-tools
+kubectl exec -it jenkins-7c479cdcd9-t2k5b cat /var/jenkins_home/secrets/initialAdminPassword -n devops-tools
 
 ```
 

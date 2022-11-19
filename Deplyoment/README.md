@@ -1,0 +1,1 @@
+here goes the guide for k8s deployment

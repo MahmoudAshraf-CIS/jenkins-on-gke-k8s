@@ -13,6 +13,7 @@ Deploy to Kubernetes cluster
 
 
 ```cli
+git clone https://github.com/MahmoudAshraf-CIS/jenkins-on-gke-k8s
 kubectl create namespace devops-tools
 kubectl apply -f serviceAccount.yaml
 ```
@@ -20,18 +21,46 @@ For the sake of simplicity, am assuming Jenkins data will be stored on a persist
 before proceeding you need to get the node name 
 
 ```cli
-kubectl get nodes
+$ kubectl get nodes
+NAME                                        STATUS   ROLES    AGE   VERSION
+gke-tf-cluster-tf-node-pool-0571c2a0-1fz8   Ready    <none>   22h   v1.23.12-gke.100
 ```
 
-[Set the values at volume.yaml](volume.yaml?plain#L33)
+So you should add `gke-tf-cluster-tf-node-pool-0571c2a0-1fz8`
+[on values at volume.yaml](volume.yaml?plain#L33)
 
 
-```
+Continue the deployment
+```cli
 kubectl create -f volume.yaml
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
-kubectl get pods --namespace=devops-tools
-kubectl exec -it jenkins-7c479cdcd9-t2k5b cat /var/jenkins_home/secrets/initialAdminPassword -n devops-tools
-
 ```
 
+Get Jenkins initial admin password
+
+```cli
+$ kubectl get pods --namespace=devops-tools
+NAME                      READY   STATUS    RESTARTS   AGE
+jenkins-b96f7764f-9qx99   0/1     Pending   0          5m19s
+```
+
+```
+$ kubectl exec -it jenkins-b96f7764f-9qx99 cat /var/jenkins_home/secrets/initialAdminPassword -n devops-tools
+```
+
+
+
+Extra Commands
+
+Delete all resources under the namespace 
+```cli
+kubectl delete all --all --namespace=devops-tools
+```
+
+
+```cli
+kubectl get pods --namespace=devops-tools
+kubectl get services --namespace=devops-tools
+kubectl get deployments --namespace=devops-tools
+```

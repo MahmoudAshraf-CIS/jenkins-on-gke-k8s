@@ -64,8 +64,26 @@ docker image build -t mnnsashraf/custom-jenkins-docker .
     then, you may expose the deployment over loadbalancer
 
     ```cli
-    kubectl expose deployment jenkins-server --type LoadBalancer --port 8080 --target-port 8080
+    kubectl expose deployment jenkins-server --type LoadBalancer --port=8080,50000 --target-port 8080
     ```
+    Open jenkins interface
+    ```cli
+    http://loadbalancerip
+    ```
+
+    get Jenkins pass
+    ```cli
+    kubectl get pods
+    kubectl exec -it <pod name> cat /var/jenkins_home/secrets/initialAdminPassword
+    kubectl exec -it jenkins-server-5c4f967578-k9qhb cat /var/jenkins_home/secrets/initialAdminPassword 
+    ```
+
+    Open shell in interactive mode 
+    ```cli
+    kubectl exec -it <pod name> /bin/bash
+    kubectl exec -it jenkins-server-5c4f967578-k9qhb /bin/bash
+    ```
+
 - - - - 
 # Publish to docker hub #
 

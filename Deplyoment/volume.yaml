@@ -30,7 +30,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - gke-tf-cluster-tf-node-pool-0571c2a0-1fz8
+          - gke-my-cluster-jenkins-pool-d20691a9-v4mp
 
 ---
 apiVersion: v1

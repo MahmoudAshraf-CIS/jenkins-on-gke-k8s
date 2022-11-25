@@ -20,12 +20,9 @@ spec:
       containers:
         - name: jenkins
           image: mnnsashraf/custom-jenkins-docker:latest
-          command: ["/bin/sh", "-c"]
+          command: ["/bin/bash", "-c"]
           args:
             - echo starting;
-              
-
-
           resources:
             limits:
               memory: "2Gi"

@@ -64,3 +64,16 @@ kubectl get pods --namespace=devops-tools
 kubectl get services --namespace=devops-tools
 kubectl get deployments --namespace=devops-tools
 ```
+
+
+
+ 
+kubectl apply -f serviceAccount.yaml
+kubectl create -f volume.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+kubectl delete -f serviceAccount.yaml
+kubectl delete -f volume.yaml
+kubectl delete -f deployment.yaml
+kubectl delete -f service.yaml

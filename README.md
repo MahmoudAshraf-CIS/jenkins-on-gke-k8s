@@ -55,22 +55,6 @@ docker image build -t mnnsashraf/custom-jenkins-docker .
     ##### `in-line` method is used here but it can also be in .yaml deployment
     [See Guide here](Deplyoment/README.md)
      
-
-    Create a deployment 
-    ```cli
-    kubectl create deployment jenkins-server --image=mnnsashraf/custom-jenkins-docker
-    ```
-
-    then, you may expose the deployment over loadbalancer
-
-    ```cli
-    kubectl expose deployment jenkins-server --type LoadBalancer --port=8080,50000 --target-port 8080
-    ```
-    Open jenkins interface
-    ```cli
-    http://loadbalancerip
-    ```
-
     get Jenkins pass
     ```cli
     kubectl get pods

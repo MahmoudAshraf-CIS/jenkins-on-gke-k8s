@@ -13,4 +13,6 @@ spec:
       targetPort: 8080
   selector:
     app: jenkins-server
+  nodeSelector: 
+    app: jenkins-server
   type: LoadBalancer

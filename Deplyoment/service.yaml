@@ -8,10 +8,10 @@ metadata:
     app: jenkins-server
 spec:
   ports:
-    - name: http
+    - name: httpport
       port: 8080
       targetPort: 8080
-    - name: http
+    - name: jnlpport
       port: 50000
       targetPort: 50000
   selector:

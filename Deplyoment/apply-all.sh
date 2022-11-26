@@ -7,3 +7,4 @@ kubectl apply -f service.yaml
 
 kubectl get deployments -n devops-tools 
 kubectl  describe deployments --namespace=devops-tools
+kubectl get pods
